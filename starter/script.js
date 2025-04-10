@@ -1,4 +1,6 @@
 'use strict';
+
+//note: whenever you need to manipulate styles on a page, just export the styles to a class and use the class
 //we will select everything we need and store it in varibles and then we can use them over and over again
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -27,8 +29,22 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
   }); //we attached the function to the three buttons because we did it in the loop while we were looping over the Nodelist which contains all of the buttons
 }
 
-btnCloseModal.addEventListener('click', function () {
+//closing the modal
+// btnCloseModal.addEventListener('click', function () {
+//   //using the .add method
+//   modal.classList.add('hidden');
+//   overlay.classList.add('hidden');
+// });
+
+//closing the modal when you click on the overlay or the "x" button, and using the DRY principle because we do not want the same code in overlay and btnCloseModal. so we exported that code into a more real names function
+const closeModal = function () {
   modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+overlay.addEventListener('click', function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
 });
 
-//note: whenever you need to manipulate styles on a page, just export the styles to a class and use the class
+btnCloseModal.addEventListener('click', closeModal); //we specified the closeModal function
