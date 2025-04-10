@@ -20,6 +20,15 @@ console.log(btnsOpenModal); //notice that it only selects one button and that is
 for (let i = 0; i < btnsOpenModal.length; i++) {
   btnsOpenModal[i].addEventListener('click', function () {
     console.log('Button Clicked');
-    modal.classList.remove('hidden'); //clasList property has a lot of methods but we will use .remove We do not use the dot here. we can also add classes and even check if an element contains a certain class
+    //using classList and .remove method
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+    //clasList property has a lot of methods but we will use .remove We do not use the dot here. we can also add classes and even check if an element contains a certain class. we can remove multiple classes just by using a comma
   }); //we attached the function to the three buttons because we did it in the loop while we were looping over the Nodelist which contains all of the buttons
 }
+
+btnCloseModal.addEventListener('click', function () {
+  modal.classList.add('hidden');
+});
+
+//note: whenever you need to manipulate styles on a page, just export the styles to a class and use the class
